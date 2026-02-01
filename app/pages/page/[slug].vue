@@ -9,6 +9,8 @@
   <div class="page">
     <h1 class="mb-8 text-primary">{{ page.title }}</h1>
     <div class="content" v-html="page.content"></div>
+    <br /><br />
+    <Recommendations v-if="page.display_recommendations" />
   </div>
 </template>
 

@@ -1,7 +1,5 @@
 <script setup>
   const details = await useAPI().get('/details');
-  console.log("APP");
-  console.log(details);
 
   useHead({
     titleTemplate: (title) => {
