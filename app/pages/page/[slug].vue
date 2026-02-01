@@ -7,7 +7,13 @@
 
 <template>
   <div class="page">
-    <h1 class="mb-8">{{ page.title }}</h1>
+    <h1 class="mb-8 text-primary">{{ page.title }}</h1>
     <div class="content" v-html="page.content"></div>
   </div>
 </template>
+
+<style>
+  div.content img {
+    @apply rounded-md shadow-md w-full md:max-w-[90%] mx-auto my-4 md:my-8;
+  }
+</style>

@@ -6,7 +6,7 @@ h1 {
   @apply text-2xl font-extrabold md:text-3xl lg:text-4xl my-2;
 }
 h2 {
-  @apply text-xl font-bold md:text-xl lg:text-2xl my-2 border-b mb-4;
+  @apply text-xl font-bold md:text-xl lg:text-2xl my-2 border-b mt-8 mb-4;
 }
 h3 {
   @apply text-lg md:text-lg lg:text-xl font-bold opacity-80;
@@ -23,7 +23,7 @@ h4 {
 }
 
 .btn {
-  @apply block mt-8 text-center px-5 py-3 text-sm md:text-base font-medium shadow w-full lg:w-fit rounded-md border border-gray-200 cursor-pointer disabled:cursor-default opacity-90 hover:opacity-100 disabled:opacity-40;
+  @apply block mt-8 text-center px-5 py-3 text-sm md:text-base font-medium shadow w-full lg:w-fit rounded-md cursor-pointer disabled:cursor-default opacity-90 hover:opacity-100 disabled:opacity-40;
 }
 
 input, textarea {

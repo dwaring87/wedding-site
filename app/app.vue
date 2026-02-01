@@ -52,5 +52,9 @@
 
   .bg-secondary {
     background-color: v-bind(details.secondary_color);
+    color: v-bind(details.secondary_color_text);
+  }
+  .text-secondary {
+    color: v-bind(details.secondary_color);
   }
 </style>
