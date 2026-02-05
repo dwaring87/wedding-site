@@ -10,9 +10,10 @@ export default defineNuxtConfig({
   ],
 
   runtimeConfig: {
+    api_cache: 15,  // Cache length for most API routes (seconds), change with NUXT_API_CACHE env var
     directus: {
-      url: '',    // set with NUXT_DIRECTUS_URL env var
-      token: ''   // set with NUXT_DIRECTUS_TOKEN env var
+      url: '',      // set with NUXT_DIRECTUS_URL env var
+      token: ''     // set with NUXT_DIRECTUS_TOKEN env var
     }
   }
 })

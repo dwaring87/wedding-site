@@ -6,7 +6,7 @@
   <div class="max-w-7xl mx-auto sm:my-12 sm:px-6 lg:px-8">
     <div class="relative shadow-xl sm:rounded-2xl sm:overflow-hidden">
       <div class="absolute inset-0">
-        <Photo d-key="hero" class="h-full w-full object-cover" transforms='[["blur", 2]]' />
+        <Photo d-key="home" class="h-full w-full object-cover" transforms='[["blur", 2]]' />
         <div class="absolute inset-0 bg-gray-500 mix-blend-multiply"></div>
       </div>
       <br />
@@ -20,10 +20,10 @@
       <div class="relative w-full p-4">
         <div class="flex justify-end gap-4">
           <NuxtLink v-if="details.rsvp_enabled" class="btn bg-primary-reversed" to="/rsvp">
-            <div class="flex items-center justify-center gap-2">
+            <span class="flex flex-nowrap items-center justify-center gap-2">
               <Icon name="ri:mail-check-fill" />
-              <p>RSVP</p>
-            </div>
+              <span>RSVP</span>
+            </span>
           </NuxtLink>
         </div>
       </div>

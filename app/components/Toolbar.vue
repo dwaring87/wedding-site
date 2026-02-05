@@ -21,11 +21,13 @@
                 class="hidden md:inline" :class="{active: route.path.includes(page.slug)}">
               {{ page.title }}
             </NuxtLink>
-            <NuxtLink to="/info" class="inline md:hidden">
-              <Icon name="ri:information-fill" />&nbsp;Info
+            <NuxtLink to="/info" class="inline md:hidden flex items-center gap-2">
+              <Icon name="ri:information-fill" class="w-[18px] h-[18px]" />
+              <span>Info</span>
             </NuxtLink>
-            <NuxtLink v-if="details.rsvp_enabled" to="/rsvp">
-              <Icon name="ri:mail-check-fill" />&nbsp;RSVP
+            <NuxtLink v-if="details.rsvp_enabled" to="/rsvp" class="flex items-center gap-2">
+              <Icon name="ri:mail-check-fill" class="w-[18px] h-[18px]" />
+              <span>RSVP</span>
             </NuxtLink>
           </div>
         </div>

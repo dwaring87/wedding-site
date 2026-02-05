@@ -3,6 +3,10 @@
   const slug = params.slug;
 
   const page = await useAPI().get(`/pages/${slug}`);
+
+  useHead({
+    title: page.value.title
+  })
 </script>
 
 <template>
@@ -11,6 +15,9 @@
     <div class="content" v-html="page.content"></div>
     <br /><br />
     <Recommendations v-if="page.display_recommendations" />
+    <div class="flex justify-center md:justify-end mt-12 md:pr-8">
+      <p class="text-gray-400 text-shadow-sm">Last Updated: {{ new Date(page.date_updated || page.date_created).toLocaleDateString() }}</p>
+    </div>
   </div>
 </template>
 

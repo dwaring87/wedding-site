@@ -22,7 +22,7 @@
       <div v-if="recs.recommendations.length > 10" class="well mt-8">
         <h4 class="mb-2">Jump to Category:</h4>
         <div class="inline sm:flex flex-wrap gap-x-2 justify-between">
-          <span v-for="category in recs.categories" class="block my-3 bg-cyan-800 text-white rounded-md px-2 cursor-pointer w-fit" @click="scroll(category)">
+          <span v-for="category in recs.categories" class="block my-3 bg-primary rounded-md px-2 cursor-pointer w-fit" @click="scroll(category)">
             {{ category }}
           </span>
         </div>

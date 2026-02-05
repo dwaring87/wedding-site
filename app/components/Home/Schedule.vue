@@ -13,7 +13,7 @@
 
 <template>
   <div class="container">
-    <div v-if="details.schedule_items.length > 0" class="max-w-2xl mx-auto bg-gray-50 drop-shadow-xl">
+    <div v-if="details.schedule_items?.length > 0" class="max-w-2xl mx-auto bg-gray-50 drop-shadow-xl">
       <hr class="w-full h-[2px] bg-gray-300 mt-24 mb-12" />
 
       <h1 class="text-center mb-12 text-3xl text-primary">Schedule</h1>
@@ -23,9 +23,9 @@
 
       <br />
 
-      <div v-if="details.schedule_page.slug" class="mx-8">
-        <NuxtLink :to="`/page/${details.schedule_page.slug}`">
-          <button class="btn bg-primary mx-auto">{{ details.schedule_page.title }}</button>
+      <div v-if="details.schedule_page?.slug" class="mx-8">
+        <NuxtLink :to="`/page/${details.schedule_page.slug}`" class="btn bg-primary mx-auto">
+          {{ details.schedule_page.title }}
         </NuxtLink>
       </div>
 

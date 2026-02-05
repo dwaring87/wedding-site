@@ -8,10 +8,9 @@ export default defineEventHandler(async (event) => {
         },
         {
             fields: [
-                'id', 'date_updated', 'invite_code',
+                'id', 'date_updated', 'invite_code', 'name',
                 'guests.id', 'guests.name', 'guests.email', 'guests.rsvp', 'guests.notes',
-                'guests.meal_choice.id', 'guests.meal_choice.name',
-                'guests.dietary_restrictions.dietary_restrictions_id.id', 'guests.dietary_restrictions.dietary_restrictions_id.name'
+                'guests.meal_choice.id', 'guests.dietary_restrictions.dietary_restrictions_id.id',
             ]
         }
     );

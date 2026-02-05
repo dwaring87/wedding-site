@@ -23,11 +23,11 @@ h4 {
 }
 
 .btn {
-  @apply block mt-8 text-center px-5 py-3 text-sm md:text-base font-medium shadow w-full lg:w-fit rounded-md cursor-pointer disabled:cursor-default opacity-90 hover:opacity-100 disabled:opacity-40;
+  @apply block mt-8 text-center px-5 py-3 text-sm md:text-base font-medium shadow w-full lg:w-fit rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer disabled:cursor-default opacity-90 hover:opacity-100 disabled:opacity-40;
 }
 
 input, textarea {
-  @apply p-2 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-cyan-700 focus:ring-offset-2;
+  @apply p-2 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
 }
 
 .well {
@@ -36,9 +36,6 @@ input, textarea {
 
 .alert {
   @apply bg-amber-500 text-white border-2 border-amber-700 rounded-md shadow-md p-4;
-}
-.success {
-  @apply bg-emerald-600 text-emerald-100 border-2 border-emerald-800 rounded-md shadow-md p-4;
 }
 
 ul {

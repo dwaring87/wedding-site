@@ -1,5 +1,3 @@
-import { getSingletonItem } from "#server/utils/directus"
-
 export default defineEventHandler(async (event) => {
     const { directus } = useRuntimeConfig();
     const id = getRouterParam(event, 'id');

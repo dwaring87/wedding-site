@@ -51,6 +51,20 @@ const getItem = async (collection, id_or_filter, query = {}) => {
 }
 
 /**
+ * Update a single item in a collection
+ * 
+ * @param {String} collection Collection Name
+ * @param {String} id Item ID
+ * @param {Object} body An object representing the fields to update
+ * @returns 
+ */
+const updateItem = async (collection, id, body = {}) => {
+    const { data } = await patch(`/items/${collection}/${id}`, body);
+    return data;
+}
+
+
+/**
  * Make a GET request to the Directus API to the specified path
  * 
  * @param {String} path Directus API Path
@@ -60,11 +74,38 @@ const getItem = async (collection, id_or_filter, query = {}) => {
 const get = async (path, query = {}) => {
     console.log(`[DIRECTUS] GET ${path}`);
     console.log(query);
-    return await $fetch(`${directus.url}/${path.replace(/^\/|\/$/g, '')}`, {
-        headers: { Authorization: `Bearer ${directus.token}` },
-        query
-    });
+    try {
+        return await $fetch(`${directus.url}/${path.replace(/^\/|\/$/g, '')}`, {
+            headers: { Authorization: `Bearer ${directus.token}` },
+            query
+        });
+    }
+    catch (err) {
+        throw new Error(`Unable to fetch data from the CMS [${err}]`);
+    }
+}
+
+/**
+ * Make a PATCH request to the Directus API to the specified path
+ * 
+ * @param {String} path Directus API Path
+ * @param {Object} body Body Params (fields to update)
+ * @returns the API Response
+ */
+const patch = async (path, body = {}) => {
+    console.log(`[DIRECTUS] PATCH ${path}`);
+    console.log(body);
+    try {
+        return await $fetch(`${directus.url}/${path.replace(/^\/|\/$/g, '')}`, {
+            method: 'PATCH',
+            headers: { Authorization: `Bearer ${directus.token}` },
+            body
+        });
+    }
+    catch (err) {
+        throw new Error(`Unable to update data in the CMS [${err}]`);
+    }
 }
 
 
-export { getSingletonItem, getItems, getItem }
+export { getSingletonItem, getItems, getItem, updateItem }
