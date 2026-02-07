@@ -27,7 +27,7 @@ h4 {
 }
 
 input, textarea {
-  @apply p-2 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
+  @apply p-2 w-full text-gray-900 bg-white/80 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2;
 }
 
 .well {

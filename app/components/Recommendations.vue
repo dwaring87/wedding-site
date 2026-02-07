@@ -16,7 +16,7 @@
   <div>
 
     <!-- Recommendations section -->
-    <div v-if="recs && recs.recommendations && recs.recommendations.length > 0" id="toc">
+    <div v-if="recs && recs.recommendations" id="toc">
 
       <!-- Category Index -->
       <div v-if="recs.recommendations.length > 10" class="well mt-8">

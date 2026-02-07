@@ -1,5 +1,5 @@
 import { getSingletonItem } from "#server/utils/directus"
-const { api_cache } = useRuntimeConfig();
+const { cache } = useRuntimeConfig();
 
 export default cachedEventHandler(async (event) => {
     const fields = getRouterParam(event, 'fields');
@@ -7,6 +7,6 @@ export default cachedEventHandler(async (event) => {
         fields: fields.split(',').filter((e) => e !== '')
     });
 }, {
-  maxAge: api_cache,
+  maxAge: cache.api,
   getKey: (event) => event.path
 })

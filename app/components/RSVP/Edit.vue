@@ -7,7 +7,7 @@
     invitation: Object
   });
   const emit = defineEmits(['cancel']);
-  const guests = ref(JSON.parse(JSON.stringify(props.invitation.guests)));
+  const guests = ref(props.invitation.guests);
 
   const updateMealChoice = (index, selections) => {
     guests.value[index].meal_choice = { id: selections[0] };
@@ -36,36 +36,18 @@
 
     for ( let i = 0; i < guests.value.length; i++ ) {
       const guest = guests.value[i];
-      const original = props.invitation.guests[i];
-      const updated_guest_props = {
-        name: guest.name !== original.name ? guest.name : undefined,
-        email: guest.email !== original.email ? guest.email : undefined,
-        rsvp: !!guest.rsvp,
-        meal_choice: JSON.stringify(guest.meal_choice) !== JSON.stringify(original.meal_choice) ? guest.meal_choice : undefined,
-        dietary_restrictions: JSON.stringify(guest.dietary_restrictions) !== JSON.stringify(original.dietary_restrictions) ? guest.dietary_restrictions : undefined,
-        notes: guest.notes !== original.notes ? guest.notes : undefined
-      }
+      guest.rsvp = !!guest.rsvp;  // force to boolean if not selected
       if ( guest.rsvp ) {
         attending.value = true;
       }
 
-      console.log("UPDATED GUEST PROPS");
-      console.log(guest.id);
-      console.log(updated_guest_props);
-
       await useSleep(500);
       try {
-        const resp = await useAPI().patch(`/guests/${guest.id}`, updated_guest_props);
-        console.log(resp);
+        await useAPI().patch(`/guests/${guest.id}`, guest);
       }
       catch (err) {
         errors.push(`Could not update Guest <strong><em>${guest.name}</em></strong> [${err}].`);
       }
-
-      // let { success, error } = await updateGuest(guest.id, updated_guest_props);
-      // if ( !success ) {
-      //   errors.push(`Could not update Guest <strong><em>${guest.name}</em></strong> [${error}].`);
-      // }
     };
 
     if ( errors.length > 0 ) {

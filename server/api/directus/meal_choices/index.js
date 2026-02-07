@@ -1,5 +1,5 @@
 import { getItems } from "#server/utils/directus"
-const { api_cache } = useRuntimeConfig();
+const { cache } = useRuntimeConfig();
 
 export default cachedEventHandler(async () => {
     return await getItems('meal_choices', {
@@ -7,6 +7,6 @@ export default cachedEventHandler(async () => {
         sort: 'sort'
     });
 }, {
-  maxAge: api_cache,
+  maxAge: cache.api,
   getKey: (event) => event.path
 })
