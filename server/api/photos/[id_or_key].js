@@ -2,7 +2,7 @@ import { getSingletonItem } from "#server/utils/directus";
 import { toBase64 } from "#server/utils/blobs";
 const { cache } = useRuntimeConfig();
 
-export default cachedEventHandler(async (event) => {
+export default defineCachedEventHandler(async (event) => {
     const { directus } = useRuntimeConfig();
     const id_or_key = getRouterParam(event, 'id_or_key');
     const { type, ...params } = getQuery(event);
@@ -25,7 +25,4 @@ export default cachedEventHandler(async (event) => {
         image: base64,
         type: img.type
     };
-}, {
-    maxAge: cache.photo,
-    getKey: (event) => event.path
-})
+}, { maxAge: cache.photo })

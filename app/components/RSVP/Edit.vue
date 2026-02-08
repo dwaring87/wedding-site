@@ -10,7 +10,7 @@
   const guests = ref(props.invitation.guests);
 
   const updateMealChoice = (index, selections) => {
-    guests.value[index].meal_choice = { id: selections[0] };
+    guests.value[index].meal_choice = selections?.length === 1 ? { id: selections[0] } : null;
   }
 
   const updateDietaryRestriction = (index, selections) => {

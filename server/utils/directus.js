@@ -71,7 +71,7 @@ const updateItem = async (collection, id, body = {}) => {
  * @param {Object} [query] Additional query params (fields, etc) 
  * @returns 
  */
-const deleteItems = async(collection, id_or_filter, query = {}) => {
+const deleteItems = async (collection, id_or_filter, query = {}) => {
     // Get item by unique id
     if ( typeof id_or_filter === 'string' || id_or_filter instanceof String ) {
         return await remove(`/items/${collection}/${id_or_filter}`, undefined, query);
@@ -81,6 +81,15 @@ const deleteItems = async(collection, id_or_filter, query = {}) => {
         return await remove(`/items/${collection}`, { query: { filter: id_or_filter } }, query);
     }
     throw createError({ status: 404, statusText: 'Item(s) not found' });
+}
+
+/**
+ * Trigger the Guest Updated Flow with the guest id
+ * @param {String} guest_id Guest ID
+ * @returns 
+ */
+const triggerGuestUpdatedFlow = async (guest_id) => {
+    return await post(directus.guest_updated_trigger, { guest: guest_id });
 }
 
 
@@ -128,6 +137,28 @@ const patch = async (path, body = {}) => {
 }
 
 /**
+ * Make a POST request to the Directus API to the specified path
+ * 
+ * @param {String} path Directus API Path
+ * @param {Object} body Body Params
+ * @returns the API Response
+ */
+const post = async (path, body = {}) => {
+    console.log(`[DIRECTUS] POST ${path}`);
+    console.log(body);
+    try {
+        return await $fetch(`${directus.url}/${path.replace(/^\/|\/$/g, '')}`, {
+            method: 'POST',
+            headers: { Authorization: `Bearer ${directus.token}` },
+            body
+        });
+    }
+    catch (err) {
+        throw new Error(`Unable to send data to the CMS [${err}]`);
+    }
+}
+
+/**
  * Make a DELETE request to the Directus API to the specified path
  * 
  * @param {String} path Directus API Path
@@ -153,4 +184,4 @@ const remove = async(path, body = {}, query = {}) => {
 }
 
 
-export { getSingletonItem, getItems, getItem, updateItem, deleteItems }
+export { getSingletonItem, getItems, getItem, updateItem, deleteItems, triggerGuestUpdatedFlow }

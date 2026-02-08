@@ -14,7 +14,7 @@
   });
 
   const url = computed(() => {
-    return `/api/directus/photos/${props.dKey || props.dId}?type=${props.dKey ? 'key' : 'id'}&${params.value}`
+    return `/api/photos/${props.dKey || props.dId}?type=${props.dKey ? 'key' : 'id'}&${params.value}`
   })
 
   const { pending, data } = useFetch(url.value);

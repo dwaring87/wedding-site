@@ -16,7 +16,8 @@ export default defineNuxtConfig({
     },
     directus: {
       url: '',      // set with NUXT_DIRECTUS_URL env var
-      token: ''     // set with NUXT_DIRECTUS_TOKEN env var
+      token: '',    // set with NUXT_DIRECTUS_TOKEN env var
+      guest_updated_trigger: '/flows/trigger/dd126d60-20f5-4cbb-8b09-6a74e70754ed'
     }
   }
 })
