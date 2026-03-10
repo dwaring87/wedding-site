@@ -1,6 +1,6 @@
 <script setup>
   const alert = await useAPI().get('/alert');
-  const displayAlert = ref(alert.enabled);
+  const displayAlert = ref(!!alert?.value?.enabled);
 </script>
 
 <template>
